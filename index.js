@@ -82,6 +82,11 @@ router
   })
   .get('/users', (ctx, next) => {
     ctx.body = userDB.data;
+  })
+  .del('/users', (ctx, next) => {
+    userDB.data = [];
+    userDB.count = 0;
+    ctx.body = '';
   });
 
 app
