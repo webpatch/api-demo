@@ -87,6 +87,31 @@ router
     userDB.data = [];
     userDB.count = 0;
     ctx.body = '';
+  })
+  .post('/cors', (ctx, next) => {
+    const { origin = '*' } = ctx.request.header;
+    ctx.set('Access-Control-Allow-Origin', origin);
+    ctx.set('Access-Control-Allow-Credentials', 'true');
+    ctx.body = 'Hello world! Post!';
+  })
+  .get('/cors', (ctx, next) => {
+    const { origin = '*' } = ctx.request.header;
+    ctx.set('Access-Control-Allow-Origin', origin);
+    ctx.body = 'Hello world! Post!';
+  })
+  .put('/cors', (ctx, next) => {
+    const { origin = '*' } = ctx.request.header;
+    ctx.set('Access-Control-Allow-Origin', origin);
+    ctx.set('Access-Control-Allow-Credentials', 'true');
+    ctx.body = 'Hello world! Put!';
+  })
+  .options('/cors', (ctx, next) => {
+    const { origin = '*' } = ctx.request.header;
+    ctx.set('Access-Control-Allow-Origin', origin);
+    ctx.set('Access-Control-Allow-Headers', 'Content-Type');
+    ctx.set('Access-Control-Allow-Methods', 'GET,HEAD,POST,PUT');
+    ctx.set('Access-Control-Allow-Credentials', 'true');
+    ctx.body = '';
   });
 
 app
